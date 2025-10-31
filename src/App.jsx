@@ -78,20 +78,20 @@ const App = () => {
     {
       name: "Aanya Thapar, 19",
       role: "College Student",
-      quote: "In danger, you don’t always get time to act. A simple voice command and an instant alert would have prevented me from feeling so helpless.",
+      quote: "Last semester, I was walking back from my evening class when a man started following me near the hostel road. I gripped my phone, pretending to call someone, but my hands were shaking so badly that I couldn’t even unlock it. That night I realized — in danger, you don’t always get time to act. If VigilVave had been there — a simple voice command and a locked safety ring alerting police instantly — I wouldn’t have felt so helpless.",
       color: 'pink-500',
     },
     {
       name: "Sneha Singh, 28",
       role: "Working Professional",
-      quote: "I need silent protection that doesn’t depend on phone signals or luck. VigilVave gives me peace of mind during late-night commutes.",
-      color: 'purple-500',
+      quote: "I work late shifts at a marketing firm, and my cab rides home often stretch past midnight. Once, when the driver took an unfamiliar route, I froze. I kept sharing my live location with my friend, but what if the network had dropped? VigilVave could have silently locked, alerted authorities, and given me peace of mind — even when I couldn’t reach my phone.",
+      color: '-500',
     },
     {
       name: "Meera Roy, 42",
       role: "Mother",
-      quote: "A device like VigilVave means my daughter carries the assurance that someone will respond instantly when she can’t call for help.",
-      color: 'teal-500',
+      quote: "I still remember the day my daughter came home scared after being followed from her tuition. I felt anger, but mostly helplessness — I can’t always be there to protect her. A device like VigilVave would mean she carries not just technology, but assurance that someone will respond instantly when she can’t.",
+      color: 'pink-500',
     },
   ];
 
