@@ -1,7 +1,12 @@
-import Loading from './components/Landing';
+import React from "react";
+import HeroSection from "./components/Landing.jsx"
 
 function App() {
-  return <Loading />;
+  return (
+    <div className="App">
+      <HeroSection />
+    </div>
+  );
 }
 
 export default App;
