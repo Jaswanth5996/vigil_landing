@@ -167,15 +167,30 @@ const App = () => {
 
             {/* Main heading with gradient text - Adjusted sizing */}
             <h1 className="text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tighter animate-fade-in-up">
-              <span className="block bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-3 lg:mb-4">
-                VigilVave
-              </span>
+            <span
+              className="
+                block
+                text-6xl
+                sm:text-9xl
+                md:text-9xl
+                lg:text-7xl
+                xl:text-9xl
+                bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600
+                bg-clip-text text-transparent
+                mb-3 pb-2.5 lg:mb-4
+                leading-none
+                overflow-visible
+              "
+            >
+              VigilVave
+            </span>
+
               <span className="block text-gray-800 text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold">
                 Safety That
               </span>
               <span className="block text-gray-800 text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold flex items-center justify-center lg:justify-start gap-3 flex-wrap">
                 <span className="relative">
-                  <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text pr-2 text-transparent">
                     Stays
                   </span>
                   <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
@@ -222,17 +237,6 @@ const App = () => {
                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </ButtonPrimary>
 
-              {/* Trust indicators - Adjusted sizing */}
-              <div className="flex items-center gap-6 justify-center lg:justify-start text-gray-700 text-xs lg:text-sm">
-                <div className="flex items-center gap-2">
-                  <CheckCircle size={16} className="text-green-500" />
-                  <span className="font-medium">Trusted by 10K+ Women</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield size={16} className="text-blue-500" />
-                  <span className="font-medium">Certified Safe</span>
-                </div>
-              </div>
             </div>
           </div>
 
