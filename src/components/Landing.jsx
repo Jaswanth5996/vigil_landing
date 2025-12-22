@@ -14,6 +14,205 @@ import heart from '../images/heart.jpeg'
 // The distinctive dark blue/indigo color from the logo, used for inline styles
 const PRIMARY_DARK_COLOR = '#1B243B';
 
+// --- Product Modal Component ---
+const ProductModal = ({ isOpen, onClose }) => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const products = [
+    {
+      id: 1,
+      name: 'Safety Badge',
+      price: '2,999/-',
+      image: '/photo1.jpeg'
+    },
+    {
+      id: 2,
+      name: 'Wearable Band',
+      price: '4,999/-',
+      image: '/photo2.jpeg'
+    }
+  ];
+
+  const handleClose = () => {
+    onClose();
+    setTimeout(() => setSelectedProduct(null), 300);
+  };
+
+  const selectProduct = (product) => {
+    setSelectedProduct(product);
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${
+        isOpen ? 'animate-fadeIn' : ''
+      }`}
+      onClick={handleClose}
+    >
+      {/* Backdrop with blur - animated */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-lg animate-fadeIn"></div>
+
+      {/* Modal Content - animated */}
+      <div
+        className="relative bg-white rounded-3xl shadow-2xl max-w-6xl w-full overflow-hidden animate-scaleIn"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-6 right-6 z-10 bg-pink-100 hover:bg-pink-200 rounded-full p-3 shadow-lg transition transform hover:rotate-90 duration-300"
+        >
+          <svg
+            className="w-6 h-6 text-gray-800"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <div className="p-8">
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8 animate-slideDown">
+            Choose Your Product
+          </h2>
+
+          {/* Product Grid */}
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            {products.map((product, index) => (
+              <div
+                key={product.id}
+                onClick={() => selectProduct(product)}
+                className={`cursor-pointer bg-gradient-to-br from-pink-50 to-white rounded-2xl p-6 border-4 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl ${
+                  selectedProduct?.id === product.id
+                    ? 'border-pink-400 shadow-2xl scale-105'
+                    : 'border-pink-100 hover:border-pink-300'
+                }`}
+                style={{
+                  animation: `slideUp 0.5s ease-out ${index * 0.2}s both`
+                }}
+              >
+                {/* Product Image with animation */}
+                <div className="bg-white rounded-xl p-8 mb-4 shadow-sm overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-64 object-contain transform transition-transform duration-500 hover:scale-110 hover:rotate-3"
+                  />
+                </div>
+
+                {/* Product Info */}
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                    {product.name}
+                  </h3>
+                  <p className="text-4xl font-bold text-pink-500 mb-2">
+                    ₹{product.price}
+                  </p>
+                </div>
+
+                {/* Selection Indicator with animation */}
+                {selectedProduct?.id === product.id && (
+                  <div className="mt-4 flex items-center justify-center animate-bounce">
+                    <div className="bg-pink-400 text-white rounded-full px-6 py-2 text-sm font-semibold shadow-lg">
+                      ✓ Selected
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Action Buttons with animation */}
+          {selectedProduct && (
+            <div className="flex gap-4 max-w-md mx-auto animate-slideUp">
+              <button className="flex-1 bg-pink-400 hover:bg-pink-500 text-white font-bold py-4 px-6 rounded-full transition-all duration-300 shadow-lg transform hover:scale-110 hover:shadow-2xl">
+                View Product
+              </button>
+              <button className="flex-1 bg-white hover:bg-pink-50 text-pink-500 border-2 border-pink-400 font-bold py-4 px-6 rounded-full transition-all duration-300 shadow-lg transform hover:scale-110 hover:shadow-2xl">
+                Add to Cart
+              </button>
+            </div>
+          )}
+
+          {!selectedProduct && (
+            <p className="text-center text-gray-500 text-lg animate-pulse">
+              Please select a product to continue
+            </p>
+          )}
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+
+        .animate-scaleIn {
+          animation: scaleIn 0.4s ease-out;
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.5s ease-out;
+        }
+
+        .animate-slideUp {
+          animation: slideUp 0.5s ease-out;
+        }
+      `}</style>
+    </div>
+  );
+};
+
 // --- Reusable Components (Icons & Styles) ---
 
 const IconCard = ({ Icon, title, description, color }) => (
@@ -48,6 +247,7 @@ const LogoImage = () => (
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openFAQ, setOpenFAQ] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // --- Data based on the provided document ---
 
@@ -232,7 +432,7 @@ const App = () => {
 
             {/* CTA with stats - Better spacing */}
             <div className="space-y-4 lg:space-y-5 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <ButtonPrimary className="mx-auto lg:mx-0 group text-base lg:text-lg px-8 py-3">
+              <ButtonPrimary onClick={() => setIsModalOpen(true)} className="mx-auto lg:mx-0 group text-base lg:text-lg px-8 py-3">
                 Pre-Order Now & Secure Peace of Mind
                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </ButtonPrimary>
@@ -477,7 +677,8 @@ const App = () => {
                   <CardItem
                     translateZ={20}
                     as="button"
-                    className="px-4 py-2 rounded-xl bg-pink-600 text-white text-xs font-bold hover:bg-pink-700 transition"
+                    onClick={() => setIsModalOpen(true)}
+                    className="px-4 py-2 rounded-xl bg-pink-600 text-white text-xs font-bold hover:bg-pink-700 transition cursor-pointer"
                   >
                     Pre-Order
                   </CardItem>
@@ -645,7 +846,7 @@ const App = () => {
           {/* CTA */}
           <div className="text-center">
             <h4 className="text-2xl font-bold text-pink-500 mb-3">Ready to feel safe?</h4>
-            <ButtonPrimary className="px-6 py-3 text-lg">
+            <ButtonPrimary onClick={() => setIsModalOpen(true)} className="px-6 py-3 text-lg">
               Pre-Order Your VigilVave <ArrowRight size={20} className="ml-2" />
             </ButtonPrimary>
           </div>
@@ -737,7 +938,7 @@ const App = () => {
           </nav>
 
           <div className="hidden lg:block">
-            <ButtonPrimary className="px-5 py-2 text-base">Pre-Order</ButtonPrimary>
+            <ButtonPrimary onClick={() => setIsModalOpen(true)} className="px-5 py-2 text-base">Pre-Order</ButtonPrimary>
           </div>
 
           {/* Mobile Menu Button */}
@@ -765,7 +966,7 @@ const App = () => {
               {item.name}
             </a>
           ))}
-          <ButtonPrimary className="mt-8">Pre-Order</ButtonPrimary>
+          <ButtonPrimary onClick={() => { setIsModalOpen(true); setIsMenuOpen(false); }} className="mt-8">Pre-Order</ButtonPrimary>
         </div>
       </div>
     </header>
@@ -787,6 +988,9 @@ const App = () => {
         <TestimonialsSection />
       </main>
       <Footer />
+      
+      {/* Product Modal */}
+      <ProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
