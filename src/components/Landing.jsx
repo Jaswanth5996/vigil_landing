@@ -23,13 +23,13 @@ const ProductModal = ({ isOpen, onClose }) => {
       id: 1,
       name: 'Safety Badge',
       price: '2,999/-',
-      image: '/photo1.jpeg'
+      image: '/photo2.jpeg'
     },
     {
       id: 2,
       name: 'Wearable Band',
       price: '4,999/-',
-      image: '/photo2.jpeg'
+      image: '/photo1.jpeg'
     }
   ];
 
@@ -528,13 +528,13 @@ const App = () => {
           A Seamless Safety Solution for Every Woman in India.
         </h2>
         <p className="text-xl text-gray-700 mb-16 max-w-4xl mx-auto">
-          VigilVave is designed for <span className="font-bold">women and girls aged 10–49</span> across all regions, empowering independence and confidence where it matters most.
+          VigilVave is designed for <span className="font-bold">women and girls aged 15-35</span> across all regions, empowering independence and confidence where it matters most.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div className="p-8 bg-indigo-50 rounded-2xl shadow-xl border-b-4 border-pink-600 transition duration-300 hover:shadow-2xl hover:-translate-y-1">
             <User size={40} className="text-pink-600 mb-3 mx-auto" />
-            <h3 className="text-2xl font-bold text-gray-900">Ages 10–49</h3>
+            <h3 className="text-2xl font-bold text-gray-900">Ages 15–35</h3>
             <p className="text-gray-600 mt-2">Students, commuters, and professionals who need daily, immediate assurance.</p>
           </div>
           <div className="p-8 bg-indigo-50 rounded-2xl shadow-xl border-b-4 border-purple-600 transition duration-300 hover:shadow-2xl hover:-translate-y-1">
